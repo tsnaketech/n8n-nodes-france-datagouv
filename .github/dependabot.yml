@@ -7,6 +7,25 @@ updates:
     groups:
       minor-and-patch:
         update-types: ["minor", "patch"]
+    # Trois majeures sont bloquées par la chaîne d'outils de @n8n/node-cli, pas
+    # par ce dépôt. Chaque blocage a été constaté en CI ou reproduit à la main,
+    # et se lève dès que le CLI embarque des versions compatibles — retirer
+    # alors l'entrée correspondante.
+    ignore:
+      # eslint 10 retire context.getFilename(), sur lequel repose encore
+      # eslint-plugin-n8n-nodes-base : « TypeError: context.getFilename is not
+      # a function » dès la première règle, `npm run lint` sort en 2.
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
+      # TypeScript 7 casse ts-api-utils, chargé par @typescript-eslint via le
+      # CLI : « Cannot read properties of undefined (reading 'Intrinsic') ».
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      # release-it 21 parse les arguments CLI strictement et rejette dès `-n`,
+      # que @n8n/node-cli passe toujours en 0.40.3 : `npm run release` échoue
+      # avant d'avoir rien fait.
+      - dependency-name: "release-it"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "github-actions"
     directory: "/"

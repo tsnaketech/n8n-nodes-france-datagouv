@@ -33,8 +33,7 @@ export interface ISearchResponse {
 function apiErrorMessage(error: unknown): string | undefined {
 	const body = (error as { response?: { body?: unknown }; error?: unknown })?.response?.body;
 	const payload = (body ?? (error as { error?: unknown })?.error) as
-		| { erreur?: string }
-		| undefined;
+		{ erreur?: string } | undefined;
 
 	return typeof payload?.erreur === 'string' ? payload.erreur : undefined;
 }
