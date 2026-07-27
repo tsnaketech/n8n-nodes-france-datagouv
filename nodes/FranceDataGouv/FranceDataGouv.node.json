@@ -1,0 +1,43 @@
+{
+	"node": "n8n-nodes-france-datagouv.franceDataGouv",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Data & Storage"],
+	"subcategories": {
+		"Data & Storage": ["Recherche d'Entreprises", "Jours fériés"]
+	},
+	"alias": [
+		"France",
+		"data.gouv",
+		"data.gouv.fr",
+		"annuaire",
+		"SIREN",
+		"SIRET",
+		"Sirene",
+		"INSEE",
+		"entreprise",
+		"société",
+		"association",
+		"dirigeant",
+		"NAF",
+		"APE",
+		"TVA",
+		"jours fériés",
+		"férié",
+		"calendrier",
+		"holiday",
+		"Pâques",
+		"Ascension",
+		"Toussaint"
+	],
+	"resources": {
+		"primaryDocumentation": [
+			{
+				"url": "https://recherche-entreprises.api.gouv.fr/docs/"
+			},
+			{
+				"url": "https://calendrier.api.gouv.fr/jours-feries/openapi.yml"
+			}
+		]
+	}
+}
