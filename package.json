@@ -29,14 +29,16 @@
 		"url": "https://github.com/tsnaketech/n8n-nodes-france-datagouv/issues"
 	},
 	"scripts": {
-		"build": "n8n-node build",
-		"postbuild": "node scripts/copy-codex.mjs",
-		"build:watch": "tsc --watch",
-		"dev": "n8n-node dev",
-		"lint": "n8n-node lint",
-		"lint:fix": "n8n-node lint --fix",
-		"release": "n8n-node release",
-		"prepublishOnly": "n8n-node prerelease"
+		"clean": "rimraf dist",
+		"build": "tsc && gulp build:assets",
+		"rebuild": "npm run clean && npm run build",
+		"dev": "tsc --watch",
+		"format": "prettier nodes package.json gulpfile.js --write",
+		"format:check": "prettier nodes package.json gulpfile.js --check",
+		"lint": "eslint nodes package.json",
+		"lint:fix": "eslint nodes package.json --fix",
+		"ci": "npm run format:check && npm run lint && npm run build",
+		"prepack": "npm run rebuild"
 	},
 	"files": [
 		"dist"
@@ -51,8 +53,10 @@
 	"devDependencies": {
 		"@n8n/node-cli": "*",
 		"eslint": "9.39.5",
+		"gulp": "^5.0.1",
 		"prettier": "3.9.6",
-		"release-it": "20.2.1",
+		"release-it": "21.0.1",
+		"rimraf": "^6.1.3",
 		"typescript": "5.9.3"
 	},
 	"peerDependencies": {
