@@ -183,7 +183,7 @@ réels fonctionnent sans configuration.
 
 ## Conventions de code
 
-- Prettier (`.prettierrc.js`) : **tabulations**, largeur 100, guillemets simples,
+- Prettier (`prettier.config.js`) : **tabulations**, largeur 100, guillemets simples,
   points-virgules, virgules finales partout, fins de ligne LF.
 - ESLint : config `@n8n/node-cli/eslint`, non personnalisée, en mode strict compatible
   n8n Cloud. Règles qui mordent en pratique :
